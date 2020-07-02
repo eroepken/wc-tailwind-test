@@ -1,0 +1,38 @@
+{
+  "name": "phase2website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "build-dev": "webpack -d --mode development",
+    "build-prod": "webpack -p --mode production"
+  },
+  "dependencies": {
+    "tailwindcss": "^1.4.6",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.4",
+    "css-loader": "^3.6.0",
+    "cssnano": "^4.1.10",
+    "eslint": "^7.3.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "file-loader": "^6.0.0",
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1",
+    "lodash-webpack-plugin": "^0.11.5",
+    "postcss-load-config": "^2.1.0",
+    "postcss-loader": "^3.0.0",
+    "prettier": "^2.0.5",
+    "raw-loader": "^4.0.1",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}
