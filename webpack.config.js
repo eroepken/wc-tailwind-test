@@ -1,42 +1,37 @@
-const webpack = require('webpack');
-const path = require('path');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const webpack = require("webpack");
+const path = require("path");
+const LodashModuleReplacementPlugin = require("lodash-webpack-plugin");
 
 const config = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
   },
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          'raw-loader',
-          'postcss-loader'
-        ]
+        use: ["raw-loader", "postcss-loader"],
       },
       {
         test: /\.svg$/,
-        use: 'file-loader'
+        use: "file-loader",
       },
       {
         test: /\.png$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
-              mimetype: 'image/png'
-            }
-          }
-        ]
-      }
-    ]
+              mimetype: "image/png",
+            },
+          },
+        ],
+      },
+    ],
   },
-  plugins: [
-    new LodashModuleReplacementPlugin
-  ]
+  plugins: [new LodashModuleReplacementPlugin()],
 };
 
 module.exports = config;

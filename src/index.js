@@ -1,51 +1,70 @@
-import { LitElement, html, css, svg, unsafeCSS } from 'lit-element'
-import { classMap } from 'lit-html/directives/class-map'
-import { styleMap } from 'lit-html/directives/style-map'
-import { repeat } from 'lit-html/directives/repeat'
-import { unsafeHTML } from 'lit-html/directives/unsafe-html'
-import { ifDefined } from 'lit-html/directives/if-defined'
-import postcss from 'postcss'
+import { LitElement, html, css, svg, unsafeCSS } from "lit-element";
+import { classMap } from "lit-html/directives/class-map";
+import { styleMap } from "lit-html/directives/style-map";
+import { repeat } from "lit-html/directives/repeat";
+import { unsafeHTML } from "lit-html/directives/unsafe-html";
+import { ifDefined } from "lit-html/directives/if-defined";
 
-import styles from './styles.css'
+import globalReset from "./styles.css";
 
-// import cssnano from 'cssnano'
-// import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
-
-const css1 = '.text { @apply bg-red-500; }'
-
-const processor = postcss([autoprefixer])
-
-console.log(processor.process(css1).then(result => console.log(result.css)))
-
-// const processor = postcss([
-//   // cssnano,
-//   // tailwindcss('../tailwind.config.js'),
-//   autoprefixer
-// ])
-// processor.process(css1).then(result => console.log(result.css))
+import paragraph from "./paragraph.css";
+import button from "./button.css";
+import heading from "./heading.css";
 
 export default class Component extends LitElement {
   static get styles() {
     return css`
-      ${unsafeCSS(styles)}
-    `
+      ${unsafeCSS(globalReset)}
+    `;
   }
 }
 
-export { html, css, svg, styleMap, classMap, repeat, unsafeHTML, ifDefined }
+export { html, css, svg, styleMap, classMap, repeat, unsafeHTML, ifDefined };
 
-class Test extends Component {
+class Paragraph extends Component {
   static get styles() {
     return [
       super.styles,
-      // css`${unsafeCSS(postcss.process('p { @apply bg-karma-coral; }'))}`
-    ]
+      css`
+        ${unsafeCSS(paragraph)}
+      `,
+    ];
   }
 
   render() {
-    return html`<p class="text"><slot></slot></p>`
+    return html`<p class="text"><slot></slot></p>`;
   }
 }
+customElements.define("e-p", Paragraph);
 
-customElements.define('ellie-test', Test)
+class Button extends Component {
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        ${unsafeCSS(button)}
+      `,
+    ];
+  }
+
+  render() {
+    return html`<p class="button-text"><slot></slot></p>`;
+  }
+}
+customElements.define("e-button", Button);
+
+class Heading extends Component {
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        ${unsafeCSS(heading)}
+      `,
+    ];
+  }
+
+  render() {
+    return html`<h1 class="button-text"><slot></slot></h1>`;
+  }
+}
+customElements.define("e-heading", Heading);
