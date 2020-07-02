@@ -64,7 +64,7 @@ class Heading extends Component {
   }
 
   render() {
-    return html`<h1 class="button-text"><slot></slot></h1>`;
+    return html`<h1><slot></slot></h1>`;
   }
 }
 customElements.define("e-heading", Heading);
